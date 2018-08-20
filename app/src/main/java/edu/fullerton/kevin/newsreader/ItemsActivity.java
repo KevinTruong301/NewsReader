@@ -26,7 +26,6 @@ public class ItemsActivity extends Activity{
         protected String doInBackground(String... strings) {
             String urlString = strings[0];
 
-            //download the feed and write it to a file
 
             return "Feed downloaded";
         }

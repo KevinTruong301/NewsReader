@@ -16,7 +16,6 @@ import java.net.URL;
 public class FileIO {
     private final String FILENAME = "news_feed.xml";
     private Context context = null;
-    private static String URL_STRING = "http://rss.cnn.com/rss/cnn_tech.rss";
 
     public FileIO(Context context) {
         this.context = context;
