@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">NewsReader</string>
+    <string name="item_pub_date">1/1/01</string>
+    <string name="item_title">Title</string>
+    <sting name="item_description">item</sting>
+    <string name="item_link">link</string>
 </resources>

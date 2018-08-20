@@ -44,4 +44,9 @@ public class FileIO {
 
     }
 
+    public RSSFeed readFile(){
+        try {
+            SAXParserFactory factory = SAXParserFactory.newInstance();
+        }
+    }
 }
