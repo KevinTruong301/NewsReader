@@ -3,10 +3,17 @@ package edu.fullerton.kevin.newsreader;
 import android.content.Context;
 import android.util.Log;
 
+import org.xml.sax.InputSource;
+import org.xml.sax.XMLReader;
+
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 
 
 /**
@@ -16,6 +23,8 @@ import java.net.URL;
 public class FileIO {
     private final String FILENAME = "news_feed.xml";
     private Context context = null;
+    private String TAG = "FileIO";
+
 
     public FileIO(Context context) {
         this.context = context;
@@ -43,4 +52,28 @@ public class FileIO {
 
     }
 
+    public RSSFeed readFile(){
+        try {
+            SAXParserFactory factory = SAXParserFactory.newInstance();
+            SAXParser parser = factory.newSAXParser();
+            XMLReader xmlReader = parser.getXMLReader();
+
+            RSSFeedHandler theRSSFeedHandler = new RSSFeedhandler();
+            xmlReader.setContentHandler(theRSSFeedHandler);
+
+            FileInputStream in = context.openFileInput(FILENAME);
+
+            InputSource is = new InputSource();
+            xmlReader.parse(is);
+
+            RSSFeed feed = theRSSFeedHandler.getFeed();
+            return feed;
+
+        }
+        catch (Exception i){
+            Log.d(TAG, "readFile: " + i);
+            return null;
+        }
+
+    }
 }
